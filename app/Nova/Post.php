@@ -28,15 +28,36 @@ class Post extends Resource
      * @var string
      */
     public static $title = 'title';
-
+//    public static $globallySearchable = false;
     /**
      * The columns that should be searched.
      *
      * @var array
      */
-    public static $search = [
-        'title',' body'
-    ];
+//    public static $search = [
+//        'id','title',' body'
+//    ];
+
+    public function title()
+    {
+        return $this->title.' - '.$this->category;
+    }
+
+    public function subtitle()
+    {
+        return 'Author: '.$this->user->name;
+    }
+    /**
+     * Build an "index" query for the given resource.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->where('user_id',$request->user()->id);
+    }
 
     /**
      * Get the fields displayed by the resource.
@@ -48,11 +69,19 @@ class Post extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Title'),
-            Trix::make('Body'),
-            DateTime::make('Publish Post At','publish_at')->hideFromIndex(),
-            DateTime::make('Publish Until')->hideFromIndex(),
-            Boolean::make('Is Published'),
+            Text::make('Title')->rules(['required','min:5']),
+            Trix::make('Body')->rules(['required']),
+            DateTime::make('Publish Post At','publish_at')
+                ->hideFromIndex()
+                ->rules(['after_or_equal:today']),
+            DateTime::make('Publish Until')
+                ->hideFromIndex()
+                ->rules(['after_or_equal:publish_at']),
+            Boolean::make('Is Published')
+                ->canSee(function($request){
+//                    return $request->user()->can('publish_post',$this);
+                    return false;
+                }),
             Select::make('Category')->options([
                 'tutorials' => 'Tutorials',
                 'news' => 'News'
