@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
@@ -54,7 +56,9 @@ class Post extends Resource
             Select::make('Category')->options([
                 'tutorials' => 'Tutorials',
                 'news' => 'News'
-            ])->hideWhenUpdating()
+            ])->hideWhenUpdating(),
+            BelongsTo::make('User'),
+            BelongsToMany::make('Tags')
         ];
     }
 
