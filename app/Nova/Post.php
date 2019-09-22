@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\PublishPost;
 use App\Nova\Filters\PostCategories;
 use App\Nova\Filters\PostPublished;
 use App\Nova\Lenses\MostTags;
@@ -82,7 +83,8 @@ class Post extends Resource
                 ->rules(['after_or_equal:publish_at']),
             Boolean::make('Is Published')
                 ->canSee(function($request){
-//                    return $request->user()->can('publish_post',$this);
+                    return true;
+                    return $request->user()->can('publish_post',$this);
                     return false;
                 }),
             Select::make('Category')->options([
@@ -140,6 +142,14 @@ class Post extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new PublishPost()
+//            (new PublishPost())->canSee(function($request){
+//                return $request->user()->id == 1;
+//            })->canRun(function($request, $post){
+//                return true;
+//                return $post->id == 3;
+//            })
+        ];
     }
 }
