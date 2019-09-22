@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Nova\Metrics\PostCount;
+use App\Nova\Metrics\PostsPerCategory;
+use App\Nova\Metrics\PostsPerDay;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
@@ -56,7 +59,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+//            new Help,
+
         ];
     }
 
