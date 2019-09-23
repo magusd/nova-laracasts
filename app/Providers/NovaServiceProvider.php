@@ -10,6 +10,7 @@ use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Seoseo\Viewcache\Viewcache;
+use Seoseo\NovaClock\NovaClock;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -61,6 +62,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
 //            new Help,
+            (new NovaClock)->displaySeconds()
 
         ];
     }
