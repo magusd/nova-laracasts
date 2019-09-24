@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "96247b141a2a4007025e40535a074932",
+    "content-hash": "d981674ec89903c352cf336ef32f0235",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -2085,6 +2085,39 @@
                 "MIT"
             ],
             "description": "A Laravel Nova card.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ]
+        },
+        {
+            "name": "seoseo/string-limit",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/StringLimit",
+                "reference": "3a594268c9054a2356e72ab20062055cefecfbad"
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Seoseo\\StringLimit\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Seoseo\\StringLimit\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
             "keywords": [
                 "laravel",
                 "nova"

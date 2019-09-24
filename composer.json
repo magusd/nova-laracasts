@@ -68,6 +68,10 @@
         {
             "type": "path",
             "url": "./nova-components/StringLimit"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/StringLimit"
         }
     ],
     "minimum-stability": "dev",

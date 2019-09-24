@@ -19,6 +19,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Seoseo\StringLimit\StringLimit;
 
 class Post extends Resource
 {
@@ -76,7 +77,7 @@ class Post extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Title')->rules(['required','min:5']),
+            StringLimit::make('Title')->rules(['required','min:5'])->max(10),
             Trix::make('Body')->rules(['required']),
             DateTime::make('Publish Post At','publish_at')
                 ->hideFromIndex()
