@@ -18,7 +18,8 @@
         "predis/predis": "^1.1",
         "seoseo/viewcache": "*",
         "seoseo/nova-clock": "*",
-        "seoseo/string-limit": "*"
+        "seoseo/string-limit": "*",
+        "seoseo/nova-theme": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -72,6 +73,10 @@
         {
             "type": "path",
             "url": "./nova-components/StringLimit"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/NovaTheme"
         }
     ],
     "minimum-stability": "dev",

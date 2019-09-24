@@ -1,5 +1,7 @@
 <?php
 
+use Seoseo\NovaTheme\ThemeServiceProvider;
+
 return [
 
     /*
@@ -175,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\NovaServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        ThemeServiceProvider::class
 
     ],
 

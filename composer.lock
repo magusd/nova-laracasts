@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d981674ec89903c352cf336ef32f0235",
+    "content-hash": "33035bcc2297026023934cdb475a839a",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -2085,6 +2085,39 @@
                 "MIT"
             ],
             "description": "A Laravel Nova card.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ]
+        },
+        {
+            "name": "seoseo/nova-theme",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/NovaTheme",
+                "reference": "7aceb195ec7de80174827e5492e9271a7a42f63b"
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Seoseo\\NovaTheme\\ThemeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Seoseo\\NovaTheme\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova theme.",
             "keywords": [
                 "laravel",
                 "nova"
